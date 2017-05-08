@@ -13,6 +13,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import evolution.util.FileUtil;
+
 @Configuration// Denote the current class as the configuration class. 
 // This notation is discouraged because it makes re-factoring harder in that you need to change the path when re-factoring.
 @MapperScan(basePackages = "evolution")// Scan all the mappers under the mapper package for safety reasons.
@@ -20,6 +22,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 public class DaoConfiguration {
 	@Value("${mybatis.typeAliasesPackage}")
 	private String typeAliasesPackage;
+	
+	@Value("${mybatis.xmlMappersPackage}")
+	private String xmlMappersPackage;
 	
 	@Bean// Inject DataSource
 	@ConfigurationProperties("datasource")// Reads the properties from application.properties automatically. The prefix is datasource. 
@@ -31,7 +36,8 @@ public class DaoConfiguration {
 	public SqlSessionFactoryBean sqlSessionFactoryBean() {
 		SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
 		sessionFactory.setDataSource(dataSource());
-		sessionFactory.setTypeAliasesPackage(typeAliasesPackage);
+		sessionFactory.setTypeAliasesPackage(this.typeAliasesPackage);
+		sessionFactory.setMapperLocations(FileUtil.getResources(this.xmlMappersPackage));
 		return sessionFactory;
 	}
 
