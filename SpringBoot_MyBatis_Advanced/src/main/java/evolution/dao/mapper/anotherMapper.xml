@@ -1,0 +1,18 @@
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="evolution.dao.mapper.AnotherMapper">
+    <resultMap id="simpleStudent" type="evolution.entity.SimpleStudent">
+        <id column="id" property="id" />
+        <result column="name" property="name" />
+    </resultMap>
+    <select id="selectAllUsingXml" resultMap="simpleStudent">
+        select id, name from any_table
+    </select>
+    <select id="selectByNameUsingXml" resultMap="simpleStudent">
+        select id, name from any_table where name = #{name}
+    </select>
+    <insert id="insertUsingXml" parameterType="evolution.entity.Student" useGeneratedKeys="true" keyProperty="id">
+        insert into any_table(name) values(#{name})
+    </insert>
+</mapper>
