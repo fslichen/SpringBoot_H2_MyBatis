@@ -1,4 +1,4 @@
-package evolution.dao.mapper;
+package evolution.mybatis.mapper;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package evolution.dao;
+package evolution.mybatis;
 
 import javax.sql.DataSource;
 
@@ -14,8 +14,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration// Denote the current class as the configuration class. 
-// This notation is discouraged because it makes refactor harder.
-@MapperScan(basePackages = "evolution.dao.mapper")// Scan all the mappers under the mapper package for safety reasons.
+// This notation is discouraged because it makes re-factoring harder in that you need to change the path when re-factoring.
+@MapperScan(basePackages = "evolution")// Scan all the mappers under the mapper package for safety reasons.
 @EnableTransactionManagement
 public class DaoConfiguration {
 	@Value("${mybatis.typeAliasesPackage}")

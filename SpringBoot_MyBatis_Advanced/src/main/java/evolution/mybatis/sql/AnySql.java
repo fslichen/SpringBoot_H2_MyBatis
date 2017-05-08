@@ -1,4 +1,4 @@
-package evolution.dao.sql;
+package evolution.mybatis.sql;
 
 public class AnySql {
 	public String selectById() {

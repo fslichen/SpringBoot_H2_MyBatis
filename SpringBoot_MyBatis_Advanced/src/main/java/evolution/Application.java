@@ -12,10 +12,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import evolution.dao.mapper.AnotherMapper;
-import evolution.dao.mapper.AnyMapper;
 import evolution.entity.SimpleStudent;
 import evolution.entity.Student;
+import evolution.mybatis.mapper.AnotherMapper;
+import evolution.mybatis.mapper.AnyMapper;
 
 @SpringBootApplication
 public class Application implements CommandLineRunner {

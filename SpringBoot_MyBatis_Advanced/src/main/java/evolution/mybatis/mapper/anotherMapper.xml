@@ -1,7 +1,8 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="evolution.dao.mapper.AnotherMapper">
+<!-- Change the path when re-factoring. -->
+<mapper namespace="evolution.mybatis.mapper.AnotherMapper">
 	<!-- Type alias is defined in application.properties and DaoConfiguration.  -->
     <resultMap id="simpleStudent" type="SimpleStudent">
         <id column="id" property="id" />
