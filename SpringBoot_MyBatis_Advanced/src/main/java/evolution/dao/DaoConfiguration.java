@@ -14,11 +14,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration// Denote the current class as the configuration class. 
 // This notation is discouraged because it makes refactor harder.
-@MapperScan(basePackages = "evolution.dao.mapper")// Scan all the mappers under the mapper package.
+@MapperScan(basePackages = "evolution.dao.mapper")// Scan all the mappers under the mapper package for safety reasons.
 @EnableTransactionManagement
 public class DaoConfiguration {
 	@Bean// Inject DataSource
-	@ConfigurationProperties("datasource")
+	@ConfigurationProperties("datasource")// Reads the properties from application.properties automatically. The prefix is datasource. 
 	public DataSource dataSource() {
 		return DataSourceBuilder.create().build();
 	}
