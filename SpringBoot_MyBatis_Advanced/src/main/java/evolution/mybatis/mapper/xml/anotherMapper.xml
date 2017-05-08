@@ -2,6 +2,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <!-- Change the path when re-factoring. -->
+<!-- It will be better to put this xml file and the mapper interfaces under the same package. -->
 <mapper namespace="evolution.mybatis.mapper.AnotherMapper">
 	<!-- Type alias is defined in application.properties and DaoConfiguration.  -->
     <resultMap id="simpleStudent" type="SimpleStudent">
