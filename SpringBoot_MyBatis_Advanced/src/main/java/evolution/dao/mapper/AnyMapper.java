@@ -19,13 +19,18 @@ public interface AnyMapper {
 	@Select("SELECT * FROM any_table WHERE NAME = #{name}")
 	public List<Student> selectByName(@Param("name") String name);
 	
-	@Insert("INSERT INTO any_table(name) VALUES(#{name})")
-	public void insert(@Param("name") String name);
+	@Insert("INSERT INTO any_table(name, gender, address, phone) "
+			+ "VALUES(#{name}, #{gender}, #{address}, #{phone})")
+	public void insert(@Param("name") String name,
+			@Param("gender") String gender,
+			@Param("address") String address,
+			@Param("phone") String phone);
 	
 	@SelectProvider(type = AnySql.class, method = "selectById")
 	public Student selectById(@Param("id") Integer id);
 	
 	@Results({
+		@Result(property = "id", column = "id"),
 		@Result(property = "name", column = "name")
 	})
 	@Select("SELECT * FROM any_table WHERE NAME = #{name}")

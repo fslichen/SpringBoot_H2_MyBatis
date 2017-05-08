@@ -31,9 +31,10 @@ public class Application implements CommandLineRunner {
 		// Initialize
 		Statement statement = dataSource.getConnection().createStatement();
 		statement.execute("drop table if exists any_table");
-		statement.execute("create table any_table(id int primary key auto_increment, name varchar(20))");
+		statement.execute("create table any_table(id int primary key auto_increment"
+				+ ", name varchar(20), gender varchar(20), address varchar(40), phone varchar(20))");
 		// Insert
-		anyMapper.insert("Chen");
+		anyMapper.insert("Chen", "M", "Illinois", "217-819-9008");
 		// Find by Mapper
 		List<Student> anyEntities = anyMapper.selectByName("Chen");// The SQL statement is written within @Select. 
 		System.out.println(anyEntities);
